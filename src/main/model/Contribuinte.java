@@ -5,7 +5,7 @@ public class Contribuinte {
    private String nome;
    private String profissao;
    private Double rendaBruta;
-   private static double juros = 0.17;
+   private static final double JUROS = 0.17;
 
     public  Contribuinte(String nome, String profissao, Double rendaBruta){
 
@@ -18,7 +18,7 @@ public class Contribuinte {
         if (rendaBruta == null || rendaBruta < 0) {
             throw new IllegalArgumentException("Renda bruta não pode ser negativa!");
         }
-        
+
         this.nome = nome;
         this.profissao = profissao;
         this.rendaBruta = rendaBruta;
@@ -37,17 +37,6 @@ public class Contribuinte {
     } // realizando o encapsulamento
 
     public static double getJuros(){
-        return juros;
+        return JUROS;
     }
-
-    @Override
-    public String toString() {
-        return "Contribuinte{" +
-                "nome='" + nome + '\'' +
-                ", profissao='" + profissao + '\'' +
-                ", rendaBruta=" + rendaBruta +
-                '}';
-    }
-
-
 }

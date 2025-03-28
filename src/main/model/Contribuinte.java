@@ -7,22 +7,22 @@ public class Contribuinte {
    private Double rendaBruta;
    private static final double JUROS = 0.17;
 
+   private static final String NOME_CAMPO_NOME = "O campo %s não pode ser vazio!";
+
     public  Contribuinte(String nome, String profissao, Double rendaBruta){
 
-        if (nome == null || nome.trim().isEmpty()) {
-            throw new IllegalArgumentException("Nome não pode ser vazio!");
-        }
-        if (profissao == null || profissao.trim().isEmpty()) {
-            throw new IllegalArgumentException("Profissão não pode ser vazia!");
-        }
-        if (rendaBruta == null || rendaBruta < 0) {
-            throw new IllegalArgumentException("Renda bruta não pode ser negativa!");
-        }
-
-        this.nome = nome;
-        this.profissao = profissao;
+        this.nome = validationCampos(nome, String.format(NOME_CAMPO_NOME, "Nome"));
+        this.profissao = validationCampos(profissao, String.format(NOME_CAMPO_NOME, "Profissão"));
         this.rendaBruta = rendaBruta;
     }
+
+    private String validationCampos(String campo, String nomeCampo) {
+        if (campo == null || campo.trim().isEmpty()) {
+            throw new IllegalArgumentException(nomeCampo + " não pode ser vazio!");
+        }
+        return campo;
+    }
+
 
     public String getNome(){
         return nome;

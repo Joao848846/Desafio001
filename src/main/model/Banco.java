@@ -7,25 +7,22 @@ public class Banco {
     private String conta;
     private String gerente;
 
+    private static final String NOME_CAMPO_NOME = "O campo %s não pode ser vazio!";
+
+
     public  Banco (String banco, String agencia, String conta, String gerente){
 
-        if (banco == null || banco.trim().isEmpty()) {
-            throw new IllegalArgumentException("Banco não pode ser vazio!");
-        }
-        if (agencia == null || agencia.trim().isEmpty()) {
-            throw new IllegalArgumentException("Agência não pode ser vazia!");
-        }
-        if (conta == null || conta.trim().isEmpty()) {
-            throw new IllegalArgumentException("Conta não pode ser vazia!");
-        }
-        if (gerente == null || gerente.trim().isEmpty()) {
-            throw new IllegalArgumentException("Gerente não pode ser vazio!");
-        }
+        this.banco = validationCampos(banco, String.format(NOME_CAMPO_NOME, "Banco"));
+        this.agencia = validationCampos(agencia, String.format(NOME_CAMPO_NOME, "Agência"));
+        this.conta = validationCampos(conta, String.format(NOME_CAMPO_NOME, "Conta"));
+        this.gerente = validationCampos(gerente, String.format(NOME_CAMPO_NOME, "Gerente"));
+    }
 
-        this.banco = banco;
-        this.agencia = agencia;
-        this.conta = conta;
-        this.gerente = gerente;
+    private String validationCampos(String campo, String nomeCampo) {
+        if (campo == null || campo.trim().isEmpty()) {
+            throw new IllegalArgumentException(nomeCampo + " não pode ser vazio!");
+        }
+        return campo;
     }
 
     public String getAgencia() {

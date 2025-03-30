@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Menu {
 
     private CreatingBank criandoBanco = new CreatingBank();
+    private CreatingPerson criandoPessoa = new CreatingPerson();
 
     public void exibirMenu() {
         Scanner info = new Scanner(System.in);
@@ -15,6 +16,7 @@ public class Menu {
             System.out.println("1 - Cadastrar Contribuinte");
             System.out.println("2 - Cadastrar Banco");
             System.out.println("3 - Listar bancos cadastrados");
+            System.out.println("4 - Listar contribuintes cadastrados");
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opção: ");
 
@@ -24,8 +26,8 @@ public class Menu {
 
                 switch (opcao) {
                     case 1:
-                        System.out.println("Cadastrar Contribuinte");
-                        // Chamar um método para cadastro no futuro
+                        System.out.println();
+                        CadastrarContribuinte();
                         break;
                     case 2:
                         System.out.println();
@@ -34,6 +36,10 @@ public class Menu {
                     case 3:
                         System.out.println();
                         criandoBanco.listarBancos();
+                        break;
+                    case 4:
+                        System.out.println();
+                        criandoPessoa.listarPessoas();
                         break;
                     case 0:
                         System.out.println("Saindo do sistema...");
@@ -72,5 +78,28 @@ public class Menu {
         String CNPJ = info.nextLine();
 
         criandoBanco.adicionarBanco(banco, agencia, conta, gerente, endereco, telefone, email, CNPJ);
+    }
+
+    private void CadastrarContribuinte() {
+        Scanner info = new Scanner(System.in);
+        System.out.print("Digite o nome: ");
+        String nome = info.nextLine();
+        System.out.print("Digite a profissão: ");
+        String profissao = info.nextLine();
+        System.out.print("Digite a renda bruta: ");
+        Double rendaBruta = info.nextDouble();
+        info.nextLine(); // Consumir quebra de linha
+        System.out.print("Digite o CPF: ");
+        String CPF = info.nextLine();
+        System.out.print("Digite a data de nascimento: ");
+        String dataNascimento = info.nextLine();
+        System.out.print("Digite o endereço: ");
+        String endereco = info.nextLine();
+        System.out.print("Digite o telefone: ");
+        String telefone = info.nextLine();
+        System.out.print("Digite o email: ");
+        String email = info.nextLine();
+
+        criandoPessoa.adicionarPessoa(nome, profissao, rendaBruta, CPF, dataNascimento, endereco, telefone, email);
     }
 }

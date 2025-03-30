@@ -28,11 +28,11 @@ public class Menu {
                         // Chamar um método para cadastro no futuro
                         break;
                     case 2:
-                        System.out.println("Cadastrar Banco");
+                        System.out.println();
                         cadastrarBanco();
                         break;
                     case 3:
-                        System.out.println("Listar Bancos Cadastrados");
+                        System.out.println();
                         criandoBanco.listarBancos();
                         break;
                     case 0:

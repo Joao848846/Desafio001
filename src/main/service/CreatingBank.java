@@ -7,7 +7,7 @@ public class CreatingBank {
 
     private List<Banco> bancos = new ArrayList<>();
 
-    public void adicionarBanco(String banco, String agencia, String conta, String gerente, String endereco, int telefone, String email, String CNPJ) {
+    public void adicionarBanco(String banco, String agencia, String conta, String gerente, String endereco, String telefone, String email, String CNPJ) {
         Banco novoBanco = new Banco(banco, agencia, conta, gerente, endereco, telefone, email, CNPJ);
         bancos.add(novoBanco);
         System.out.println("Banco cadastrado com sucesso!");

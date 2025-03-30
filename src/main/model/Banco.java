@@ -7,7 +7,7 @@ public class Banco {
     private String conta;
     private String gerente;
     private String endereco;
-    private int telefone;
+    private String telefone;
     private String email;
     private String CNPJ;
 
@@ -15,14 +15,14 @@ public class Banco {
     private static final String NOME_CAMPO_NOME = "O campo %s não pode ser vazio!";
 
 
-    public  Banco (String banco, String agencia, String conta, String gerente, String endereco, int telefone, String email, String CNPJ) {
+    public  Banco (String banco, String agencia, String conta, String gerente, String endereco, String telefone, String email, String CNPJ) {
 
         this.banco = validationCampos(banco, String.format(NOME_CAMPO_NOME, "Banco"));
         this.agencia = validationCampos(agencia, String.format(NOME_CAMPO_NOME, "Agência"));
         this.conta = validationCampos(conta, String.format(NOME_CAMPO_NOME, "Conta"));
         this.gerente = validationCampos(gerente, String.format(NOME_CAMPO_NOME, "Gerente"));
         this.endereco = validationCampos(endereco, String.format(NOME_CAMPO_NOME, "Endereço"));
-        this.telefone = telefone;
+        this.telefone = validationCampos(String.valueOf(telefone), String.format(NOME_CAMPO_NOME, "Telefone"));
         this.email = validationCampos(email, String.format(NOME_CAMPO_NOME, "Email"));
         this.CNPJ = validationCampos(CNPJ, String.format(NOME_CAMPO_NOME, "CNPJ"));
 
@@ -53,7 +53,7 @@ public class Banco {
     public String getEndereco() {
         return endereco;
     }
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
     public String getEmail() {

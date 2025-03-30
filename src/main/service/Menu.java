@@ -62,7 +62,15 @@ public class Menu {
         String conta = info.nextLine();
         System.out.print("Digite o nome do gerente: ");
         String gerente = info.nextLine();
+        System.out.print("Digite o endereço: ");
+        String endereco = info.nextLine();
+        System.out.print("Digite o telefone: ");
+        String telefone = info.nextLine();
+        System.out.print("Digite o email: ");
+        String email = info.nextLine();
+        System.out.print("Digite o CNPJ: ");
+        String CNPJ = info.nextLine();
 
-        criandoBanco.adicionarBanco(banco, agencia, conta, gerente);
+        criandoBanco.adicionarBanco(banco, agencia, conta, gerente, endereco, telefone, email, CNPJ);
     }
 }

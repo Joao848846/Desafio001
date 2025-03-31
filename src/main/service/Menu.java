@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Menu {
 
-    private CreatingBank criandoBanco = new CreatingBank();
-    private CreatingPerson criandoPessoa = new CreatingPerson();
+    private  final CreatingBank criandoBanco = new CreatingBank();
+    private  final CreatingPerson criandoPessoa = new CreatingPerson();
 
     public void exibirMenu() {
         Scanner info = new Scanner(System.in);

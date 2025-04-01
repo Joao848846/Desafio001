@@ -7,8 +7,8 @@ public class CreatingBank {
 
     private List<Banco> bancos = new ArrayList<>();
 
-    public void adicionarBanco(String banco, String agencia, String conta, String gerente, String endereco, String telefone, String email, String CNPJ) {
-        Banco novoBanco = new Banco(banco, agencia, conta, gerente, endereco, telefone, email, CNPJ);
+    public void adicionarBanco(String banco, String gerente, String endereco, String telefone, String email, String CNPJ) {
+        Banco novoBanco = new Banco(banco,gerente, endereco, telefone, email, CNPJ);
         bancos.add(novoBanco);
         System.out.println("Banco cadastrado com sucesso!");
     }
@@ -19,15 +19,16 @@ public class CreatingBank {
             System.out.println("Lista de Bancos:");
             for (Banco banco : bancos) {
                 System.out.println("Banco: " + banco.getBanco());
-                System.out.println("Agência: " + banco.getAgencia());
-                System.out.println("Conta: " + banco.getConta());
-                System.out.println("Gerente: " + banco.getGerente());
-                System.out.println("Endereço: " + banco.getEndereco());
-                System.out.println("Telefone: " + banco.getTelefone());
-                System.out.println("Email: " + banco.getEmail());
-                System.out.println("CNPJ: " + banco.getCNPJ());
-                System.out.println("-----------------------------");
             }
         }
+    }
+    public Banco getBanco(String banco) {
+        for (Banco b : bancos) {
+            if (b.getBanco().equalsIgnoreCase(banco)) {
+                return b;
+            }
+        }
+        System.out.println("Banco não encontrado.");
+        return null;
     }
 }

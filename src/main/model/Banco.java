@@ -3,8 +3,6 @@ package main.model;
 public class Banco {
 
     private String banco;
-    private String agencia;
-    private String conta;
     private String gerente;
     private String endereco;
     private String telefone;
@@ -15,11 +13,9 @@ public class Banco {
     private static final String NOME_CAMPO_NOME = "O campo %s não pode ser vazio!";
 
 
-    public  Banco (String banco, String agencia, String conta, String gerente, String endereco, String telefone, String email, String CNPJ) {
+    public  Banco (String banco, String gerente, String endereco, String telefone, String email, String CNPJ) {
 
         this.banco = validationCampos(banco, String.format(NOME_CAMPO_NOME, "Banco"));
-        this.agencia = validationCampos(agencia, String.format(NOME_CAMPO_NOME, "Agência"));
-        this.conta = validationCampos(conta, String.format(NOME_CAMPO_NOME, "Conta"));
         this.gerente = validationCampos(gerente, String.format(NOME_CAMPO_NOME, "Gerente"));
         this.endereco = validationCampos(endereco, String.format(NOME_CAMPO_NOME, "Endereço"));
         this.telefone = validationCampos(String.valueOf(telefone), String.format(NOME_CAMPO_NOME, "Telefone"));
@@ -35,16 +31,8 @@ public class Banco {
         return campo;
     }
 
-    public String getAgencia() {
-        return agencia;
-    }
-
     public String getBanco() {
         return banco;
-    }
-
-    public String getConta() {
-        return conta;
     }
 
     public String getGerente() {

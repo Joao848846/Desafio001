@@ -1,6 +1,12 @@
 package main.service;
-
+import main.model.Banco;
+import main.model.Contribuinte;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
+
+import static java.awt.SystemColor.info;
 
 public class Menu {
 
@@ -62,10 +68,6 @@ public class Menu {
         Scanner info = new Scanner(System.in);
         System.out.print("Digite o nome do banco: ");
         String banco = info.nextLine();
-        System.out.print("Digite o número da agência: ");
-        String agencia = info.nextLine();
-        System.out.print("Digite o número da conta: ");
-        String conta = info.nextLine();
         System.out.print("Digite o nome do gerente: ");
         String gerente = info.nextLine();
         System.out.print("Digite o endereço: ");
@@ -77,11 +79,26 @@ public class Menu {
         System.out.print("Digite o CNPJ: ");
         String CNPJ = info.nextLine();
 
-        criandoBanco.adicionarBanco(banco, agencia, conta, gerente, endereco, telefone, email, CNPJ);
+        criandoBanco.adicionarBanco(banco, gerente , endereco, telefone, email, CNPJ);
     }
 
     private void CadastrarContribuinte() {
+
         Scanner info = new Scanner(System.in);
+
+        System.out.println("Bancos disponíveis:");
+        criandoBanco.listarBancos(); // Exibe os bancos cadastrados
+
+        Banco bancoEscolhido = null;
+        while (bancoEscolhido == null) {
+            System.out.print("Digite o nome do banco onde deseja abrir a conta: ");
+            String nomeBanco = info.nextLine();
+            bancoEscolhido = criandoBanco.getBanco(nomeBanco);
+
+            if (bancoEscolhido == null) {
+                System.out.println("Banco não encontrado! Digite um nome válido.");
+            }
+        }
         System.out.print("Digite o nome: ");
         String nome = info.nextLine();
         System.out.print("Digite a profissão: ");
@@ -99,7 +116,21 @@ public class Menu {
         String telefone = info.nextLine();
         System.out.print("Digite o email: ");
         String email = info.nextLine();
+        System.out.print("Digite o número da conta: ");
+        String conta = info.nextLine();
+        System.out.print("Digite o número da agência: ");
+        String agencia = info.nextLine();
 
-        criandoPessoa.adicionarPessoa(nome, profissao, rendaBruta, CPF, dataNascimento, endereco, telefone, email);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dataNascimentoFormatada;
+        try {
+            dataNascimentoFormatada = LocalDate.parse(dataNascimento, formatter);
+        } catch (DateTimeParseException e) {
+            System.out.println("Formato de data inválido! Use o formato dd/MM/yyyy.");
+            return;
+        }
+
+        criandoPessoa.adicionarPessoa(nome, profissao, rendaBruta, CPF, LocalDate.parse(dataNascimento), endereco, telefone, email, conta, agencia);
     }
+
 }
